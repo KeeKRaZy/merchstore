@@ -90,7 +90,7 @@ if (isset($_POST['value'])){
         <a href="html/about.html"><p>about us</p></a>
             <a href="html/contacts.html"><p>contacts</p></a>
             <a href="html/faq.html"><p>faq</p></a>
-            <a href="#"><p>terms & conditions</p></a>
+            <a href="myreact/public/index.html"><p>terms & conditions</p></a>
             <div class="socialMeidaIcons"><a href="#"><svg class="facebook" width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="21.16" cy="21.16" r="19.66" stroke="black" stroke-opacity="0.9" stroke-width="3"/>
                 <path d="M22.4552 16.7885V14.8025C22.4552 14.4514 22.5892 14.1146 22.8275 13.8663C23.0659 13.618 23.3892 13.4785 23.7263 13.4785H24.9973V10.1685H22.4552C21.4439 10.1685 20.474 10.5869 19.7589 11.3318C19.0438 12.0767 18.6421 13.087 18.6421 14.1405V16.7885H16.1V20.7606H18.6421V31.3527H22.4552V20.7606H24.9973L26.2684 16.7885H22.4552Z" fill="black" fill-opacity="0.8"/>
