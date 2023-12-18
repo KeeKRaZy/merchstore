@@ -48,13 +48,13 @@ header ul{
 	transition: .4s;
 }
 
-h1{
+ul li a h1{
 	cursor: pointer;
 	font-size: 100px;
 	font-weight: 100;
 	margin-left: 10vw;
 }
-h1:hover{
+ul li a h1:hover{
 	color: rgb(207, 207, 207);
 }
 header i{
@@ -192,7 +192,7 @@ main{
 .square .productHoverEffect::after {
     text-transform: uppercase;
 	font-size: 30px;
-	content: "add to cart";
+	content: "MORE";
 }
 
 .square .productHoverEffect:hover {
@@ -200,7 +200,7 @@ main{
     transition: all ease-in-out 100ms;
 }
 
-.productName{
+.square .productName{
 	position: absolute;
 	top: 111%;
     left: 50%;
@@ -358,6 +358,10 @@ form a:hover{
 }
 .productTitle span{
 	border-bottom: 2px solid white;
+}
+
+.sizeStyle{
+	color: rgb(168, 168, 168);
 }
 
 .columnName .productTitle{
@@ -975,7 +979,7 @@ input::-webkit-inner-spin-button{
 	color: rgb(199, 199, 199);
 }
 
-select{
+#categoriesList select{
 	cursor: pointer;
 	position: absolute;
 	color: rgb(255, 255, 255);
@@ -987,14 +991,14 @@ select{
 	width: 255px;
 	transition: .4s;
 }
-select:hover{
+#categoriesList select:hover{
 	background-color: transparent;
 }
-select option{
+#categoriesList select option{
 	color: black;
 }
 
-select option:hover{
+#categoriesList select option:hover{
 	color: black;
 }
 

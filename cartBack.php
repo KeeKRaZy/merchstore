@@ -27,48 +27,57 @@ if ($action =='show'){
           </div>";
 
               $subtotal = 0;
+              $orderSaturs = '';
               foreach($cart as $product) {
                 $query = mysqli_query($start, "SELECT * FROM `products` WHERE id = '$product[0]';");
                 foreach($query as $row) {
                     $title = $row['title'];
                     $type = $row['type'];
                     $price = $row['price']*$product[1];
+                    $size = $product[2];
                     $subtotal += $price;
                         echo "<div class='columnName'>
                                 <li class='productTitle'>
                                     <img src='img/$title.jpg'>
-                                    <span>\"$title\"</span>
+                                    <span>$title <span class='sizeStyle'>$size</span></span>
                                 </li>
                                 <li>
                                     <li class='productPrice'>$type</li>
                                     <span class='productQtt'>⠀$product[1]</span>
                                     <span class='productType'>\$$price</span>
                                 </li>
-                                <div class='removeProduct' onclick='deleteFromCart($product[0]);'>
+                                <div class='removeProduct' onclick='deleteFromCart($product[0], `$product[2]`);'>
                                     <span></span>
                                     <span class='firstRemoveLine'></span>
                                     <span class='secondRemoveLine'></span>
                                 </div>
-                                <div class='moreProduct' onclick='moreQty($product[0]);'>
+                                <div class='moreProduct' onclick='moreQty($product[0], `$product[2]`);'>
                                     <span></span>
                                     <span class='firstmoreLine'></span>
                                     <span class='secondmoreLine'></span>
                                 </div>
-                                <div class='lessProduct' onclick='lessQty($product[0]);'>
+                                <div class='lessProduct' onclick='lessQty($product[0], `$product[2]`);'>
                                     <span></span>
                                     <span class='firstlessLine'></span>
                                     <span class='secondlessLine'></span>
                                 </div>
                             </div>";
-                    
+                           
+                            $orderSaturs = $orderSaturs . $title . ',' . $size . ',' . $product[1] . ';';
                 }};
-
-    
+                
     if(isset($_COOKIE['orderPrice'])){
         setcookie('orderPrice', $subtotal, time() - 3600, "/");
         setcookie('orderPrice', $subtotal, time() + 3600, "/");
     } else{
         setcookie('orderPrice', $subtotal, time() + 3600, "/");
+    };
+    
+    if(isset($_COOKIE['orderSaturs'])){
+        setcookie('orderSaturs', $orderSaturs, time() - 3600, "/");
+        setcookie('orderSaturs', $orderSaturs, time() + 3600, "/");
+    } else{
+        setcookie('orderSaturs', $orderSaturs, time() + 3600, "/");
     };
     
     ob_end_flush();
@@ -87,14 +96,22 @@ if ($action =='add'){
         $newProduct = array();
         $newProduct[0] = 0;
         $newProduct[1] = 1;
+        $newProduct[2] = 'L';
     }
+
     $cart = $_SESSION['cart'];
+
     $id = $_POST['id'];
+    $size = $_POST['size'];
+    $quantity = $_POST['quantity'];
+
     $newProduct[0] = $id;
+    $newProduct[1] = $quantity;
+    $newProduct[2] = $size;
 
     for ($i = 0; $i < count($cart); $i++){
-        if ($id == $cart[$i][0]){
-            $cart[$i][1] += 1;
+        if ($id == $cart[$i][0] && $size == $cart[$i][2]){
+            $cart[$i][1] += $quantity;
             $_SESSION['cart'] = $cart;
             exit;
         }
@@ -108,6 +125,7 @@ if ($action =='add'){
 if ($action =='del'){
     $cart = $_SESSION['cart'];
     $id = $_POST['id'];
+    $size = $_POST['size'];
     $newCart = array();
     $n = 0;
     for ($i = 0; $i < count($cart); $i++){
@@ -115,13 +133,22 @@ if ($action =='del'){
             $newCart[$n] = array();
             $newCart[$n][0] = $cart[$i][0];
             $newCart[$n][1] = $cart[$i][1];
+            $newCart[$n][2] = $cart[$i][2];
             $n++;
+        } else {
+            if($cart[$i][2] != $size){
+                $newCart[$n] = array();
+                $newCart[$n][0] = $cart[$i][0];
+                $newCart[$n][1] = $cart[$i][1];
+                $newCart[$n][2] = $cart[$i][2];
+                $n++;
+            }
         }
     } 
     $_SESSION['cart'] = $newCart;
 }
 
-################################################
+################################################     INSERT INTO `comments` (`text`, `email`, `product`) VALUES ('Vse круто кассно коашдл дашидиа dwaaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaad dawd adw awd asd wad aaa w awd asd wad aa w awd asd wad aaw awd asd wad aaaaaaaaaaaaa dwad a awd awd asd awdawd a aaaaaad dawd adw awd asd wad aaaa aaaaaad dawd adw awd asd wad aaaa aaaaaad dawd adw awd asd wad aaaa', 'palcevskis43@gmail.com', 'The Gentle Blade');
 
 if ($action =='cartLength'){
     $cart = $_SESSION['cart'];
@@ -137,8 +164,9 @@ if ($action =='cartLength'){
 if ($action == 'more'){
     $cart = $_SESSION['cart'];
     $id = $_POST['id'];
+    $size = $_POST['size'];
     for ($i = 0; $i < count($cart); $i++){
-        if($cart[$i][0] == $id){
+        if($cart[$i][0] == $id && $cart[$i][2] == $size){
             $cart[$i][1] += 1;
         }
     } 
@@ -151,12 +179,15 @@ if ($action == 'more'){
 if ($action == 'less'){
     $cart = $_SESSION['cart'];
     $id = $_POST['id'];
+    $size = $_POST['size'];
     for ($i = 0; $i < count($cart); $i++){
-        if($cart[$i][0] == $id){
+        if($cart[$i][0] == $id && $cart[$i][2] == $size){
             $cart[$i][1] -= 1;
             $_SESSION['cart'] = $cart;
             if($cart[$i][1] < 1){
-                echo $cart[$i][0];
+                $delid = $cart[$i][0];
+                $delsize = $cart[$i][2];
+                echo "$delid,$delsize";
             }
             exit;
         }

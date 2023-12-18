@@ -239,8 +239,9 @@ if (isset($_POST['value'])){
                     $squareColor = 'sqWhite';
                 }
                 if(isset($_COOKIE['user'])){
+                    
                     echo "<div class='square $squareColor'>
-                        <img src='img/$title.jpg'><div class='productHoverEffect' onclick='swal(`Success!`, `$type \"$title\" has been added to cart`, `success`); addToCart($id);cartLength();'></div>
+                        <img src='img/$title.jpg'><div class='productHoverEffect' onclick='window.location = `product.php?productid=$id`;'></div>
                         <div class='productName'>\"$title\"</div>
                       </div>";
                     } else {

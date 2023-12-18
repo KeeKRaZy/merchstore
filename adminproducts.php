@@ -174,7 +174,7 @@ if(isset($_POST['updateDetails'])){
                 <label class="backToMain" for="sendSearch"><i class="fa-solid fa-arrow-left-long"></i> Back</a></label>';
     
                 if(isset($errorName)){echo "<p class='error'> $errorName </p>";} 
-                echo '<input id="newProductsName" type="text" name="new-name" pattern="[a-zA-Z]+" placeholder="Title">';
+                echo '<input id="newProductsName" type="text" name="new-name" pattern="[a-zA-Z ]+" placeholder="Title">';
     
                 if(isset($errorType)){echo "<p class='error'> $errorType </p>";} 
                 echo '<input id="newProductsType" type="text" name="new-type" placeholder="Type">';
@@ -183,7 +183,7 @@ if(isset($_POST['updateDetails'])){
                 echo '<input id="newProductsPrice" type="number" step="0.01" name="new-price" placeholder="Price">';
 
                 if(isset($errorMaterial)){echo "<p class='error'> $errorMaterial </p>";} 
-                echo '<input id="newProductsMaterial" type="text" name="new-material" pattern="[a-zA-Z]+" placeholder="Material">';
+                echo '<input id="newProductsMaterial" type="text" name="new-material" pattern="[a-zA-Z ]+" placeholder="Material">';
 
                 if(isset($errorDiscription)){echo "<p class='error'> $errorDiscription </p>";} 
                 echo '<textarea type="text"  id="productDiscription" name="new-discription" placeholder="Discription"></textarea>';
@@ -248,7 +248,7 @@ if(isset($_POST['updateDetails'])){
                 <label class="backToMain" for="sendSearch"><i class="fa-solid fa-arrow-left-long"></i> Back</a></label>';
     
                 if(isset($errorName)){echo "<p class='error'> $errorName </p>";} 
-                echo '<input id="newProductsName" type="text" name="new-name" pattern="[a-zA-Z]+" placeholder="Title">';
+                echo '<input id="newProductsName" type="text" name="new-name" pattern="[a-zA-Z ]+" placeholder="Title">';
     
                 if(isset($errorType)){echo "<p class='error'> $errorType </p>";} 
                 echo '<input id="newProductsType" type="text" name="new-type" placeholder="Type">';
@@ -257,7 +257,7 @@ if(isset($_POST['updateDetails'])){
                 echo '<input id="newProductsPrice" type="number" step="0.01" name="new-price" placeholder="Price">';
 
                 if(isset($errorMaterial)){echo "<p class='error'> $errorMaterial </p>";} 
-                echo '<input id="newProductsMaterial" type="text" name="new-material" pattern="[a-zA-Z]+" placeholder="Material">';
+                echo '<input id="newProductsMaterial" type="text" name="new-material" pattern="[a-zA-Z ]+" placeholder="Material">';
 
                 if(isset($errorDiscription)){echo "<p class='error'> $errorDiscription </p>";} 
                 echo '<textarea type="text"  id="productDiscription" name="new-discription" placeholder="Discription"></textarea>';

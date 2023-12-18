@@ -10,9 +10,15 @@ session_start();
 
 $usersEmail = $_COOKIE['user'];
 $subtotal = $_COOKIE['orderPrice'];
+$saturs = $_COOKIE['orderSaturs'];
 
 if (isset($_POST['button'])) {
-    $query = "INSERT INTO `orders` (`status`, `fullPrice`, `email`) VALUES ('Pending', '$subtotal', '$usersEmail');";
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $email = $_POST['email'];
+    $address = $_POST['adress'];
+    $paymentMethod = $_POST['paymentMethod'];
+    $query = "INSERT INTO `orders` (`status`, `fullPrice`, `email`, `orderEmail`, `orderName`, `orderSurname`, `orderAddress`, `paymentMethod`, `saturs`) VALUES ('Pending', '$subtotal', '$usersEmail', '$email', '$name', '$surname', '$address', '$paymentMethod', '$saturs');";
     mysqli_query($start, $query);
     $_SESSION['cart'] = array();
 }
@@ -91,8 +97,8 @@ $query = mysqli_query($start, "SELECT * FROM users WHERE email LIKE '$usersEmail
             <li>Delivery address</li>
             <input id="insideInputAdress" class="longInput" type="text" name="adress" maxlength="29" required placeholder="Enter your adress">
             <div class="paymentMethod">
-                <label><input checked type="radio" name="paymentMethod" value="cash" onclick="showCardPay('no');"/>Payment on the spot</label>
-                <label><input type="radio" name="paymentMethod" value="card" onclick="showCardPay('yes');"/>Payment by card</label>
+                <label><input checked type="radio" name="paymentMethod" value="On the spot" onclick="showCardPay('no');"/>Payment on the spot</label>
+                <label><input type="radio" name="paymentMethod" value="By card" onclick="showCardPay('yes');"/>Payment by card</label>
             </div>
             <div id="cardPayContainer" class="cardPay">
 

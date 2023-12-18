@@ -18,14 +18,14 @@ function showMyCart(){
 
 // Позволяет удалять объекты из корзины с помощью крестика 
 
-function deleteFromCart(id){
-    console.log('del' +id);
+function deleteFromCart(id, size){
+    console.log('del' +id+' size'+size);
     $.ajax({
         async: false,
         type: "POST",
         url: "/Shop/cartBack.php",
         dataType:"text",
-        data: 'action=del&id='+id,
+        data: 'action=del&id='+id+'&size='+size,
         error: function(){
             alert('gg no chance');
         },
@@ -39,14 +39,14 @@ function deleteFromCart(id){
 
 // Позволяет уменьшить количество какого-либо продукта
 
-function lessQty(id){
+function lessQty(id, size){
     console.log('less' +id);
     $.ajax({
         async: false,
         type: "POST",
         url: "/Shop/cartBack.php",
         dataType:"text",
-        data: 'action=less&id='+id,
+        data: 'action=less&id='+id+'&size='+size,
         error: function(){
             alert('gg no chance');
         },
@@ -54,8 +54,32 @@ function lessQty(id){
             showMyCart()
             cartLength()
             if (response != ''){
-                deleteFromCart(parseInt(response))
+                let order = response.split(',');
+                let id = parseInt(order[0]);
+                let size = order[1];
+                deleteFromCart(id, size);
+                console.log(response);
             }
+        }
+    });
+}
+
+// Позволяет увеличить количество какого-либо продукта
+
+function moreQty(id, size){
+    console.log('more' +id);
+    $.ajax({
+        async: false,
+        type: "POST",
+        url: "/Shop/cartBack.php",
+        dataType:"text",
+        data: 'action=more&id='+id+'&size='+size,
+        error: function(){
+            alert('gg no chance');
+        },
+        success: function (){
+            showMyCart()
+            cartLength()
         }
     });
 }

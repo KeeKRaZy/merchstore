@@ -45,24 +45,11 @@ function closeMenu(){
     menuBlackout.classList.remove('is-visible');
 }
 
-// Позволяет добавлять продукты в корзину
-
-function addToCart(id){
-    console.log('add' +id);
-    $.ajax({
-        method: "POST",
-        url: "/Shop/cartBack.php",
-        dataType:"text",
-        data: 'action=add&id='+id,
-        error: function(){
-            alert('gg no chance');
-        }
-    });
-}
 
 // Измеряет количество продуктов в корзине на данный момент
 
 function cartLength(){
+    console.log('length');
     $.ajax({
         method: "POST",
         url: "/Shop/cartBack.php",
@@ -77,23 +64,52 @@ function cartLength(){
     });
 }
 
-// Позволяет увеличить количество какого-либо продукта
+// Закрашивает звезды при оставлении отзыва
 
-function moreQty(id){
-    console.log('more' +id);
-    $.ajax({
-        async: false,
-        type: "POST",
-        url: "/Shop/cartBack.php",
-        dataType:"text",
-        data: 'action=more&id='+id,
-        error: function(){
-            alert('gg no chance');
-        },
-        success: function (){
-            showMyCart()
-            cartLength()
-        }
-    });
+function fillStars(index) {
+    const stars = document.querySelectorAll('.star');
+      
+    for (let i = 0; i < index; i++) {
+        stars[i].classList.add('filled');
+    }
+
+    for (let i = index; i < stars.length; i++) {
+        stars[i].classList.remove('filled');
+    }
 }
 
+// Следующие 2 функции открывают и закрывают меню для оставления комментария
+
+let commentPopup = document.querySelector('.commentPopup');
+let productReview = document.querySelector('.productReview');
+document.querySelector('.coding');
+
+function openPopup(productid){
+    commentPopup.classList.add('is-visible');
+    productReview.style.height = "500px";
+    productReview.style.width = "700px";
+    document.querySelector('.coding').value = productid;
+    document.querySelector('.coding').checked = true;
+
+}
+
+function closePopup(){
+    commentPopup.classList.remove('is-visible');
+    setTimeout(function(){    productReview.style.height = "450px";
+    productReview.style.width = "650px";},300);
+
+}
+
+// Проверяет оценил ли пользователь товар (в звездах) перед загрузкой комментария в дб
+
+function commentValidation(){
+
+    let radioButtons = document.getElementsByName("starRating");
+
+    for (let i = 0; i < radioButtons.length; i++) {
+      if (radioButtons[i].checked) {
+        return;
+      }
+    }
+    document.querySelector('.errorComment').innerHTML = 'YOU HAVE TO RATE THE PRODUCT';
+}

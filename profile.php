@@ -185,13 +185,16 @@ $query = mysqli_query($start, "SELECT * FROM users WHERE email LIKE '$usersEmail
                 $orderNr = $row['nr'];
                     echo "<div class='ordersHistoryMain'>
                             <li class='historyNr'>$orderNr</li>
-                            <li class='historyDate'>$orderDate</span>
-                            <li class='historyStatus'>$orderStatus</span>
+                            <li class='historyDate'>$orderDate</li>
+                            <li class='historyStatus'>$orderStatus</li>
+                            <li><label>
+                                    <div class='productHoverEffect' onclick='window.location = `order.php?ordernr=$orderNr`;'></div>
+                                    <span class='fakeOrderRadio'>→</span>
+                            </label></li>
                         </div>";
                     };
 
-            echo'<a id="historyMoreButton">More</a>
-                    <p id="historyFooter"></p>
+            echo' <p id="historyFooter"></p>
                 </div>';
         } else {
             echo'<a href="adminpanel.php" id="adminPanelButton">ADMIN PANEL</a>';

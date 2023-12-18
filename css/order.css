@@ -1,0 +1,266 @@
+.statusSquare{
+    background-color: rgb(37, 37, 37);
+    width: 1222px;
+    margin: auto;
+    border-radius: 3px;
+    text-align: center;
+    height: 116px;
+}
+
+h2{
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 80px;
+    font-weight: 100;
+    color: rgb(153, 153, 153);
+    line-height: 116px;
+    text-transform: uppercase;
+}
+
+.userSquare{
+    background-color: rgb(37, 37, 37);
+    width: 595px;
+    height: 256px;
+    border-radius: 3px;
+
+    margin-top: 32px;
+}
+
+.orderSquare{
+    background-color: rgb(37, 37, 37);
+    width: 595px;
+    height: 256px;
+    border-radius: 3px;
+    
+    margin-left: 32px;
+    margin-top: 32px;
+}
+
+.userXorder{
+    display: flex;
+    font-size: 28px; 
+}
+
+.userXorder img{
+    position: absolute;
+    margin-top: 35px;
+    margin-left: 40px;
+}
+.userSquare p{
+    margin-left: 115px;
+}
+.orderSquare p{
+    margin-left: 122px;
+}
+.userXorder p:first-of-type{
+    margin-top: 35px;
+}
+
+
+.productSquare{
+    background-color: rgb(37, 37, 37);
+    width: 1222px;
+    height: 644px;
+    border-radius: 3px;
+    margin-top: 32px;
+    font-size: 32px;
+}
+
+.productSquare img{
+    background-color: rgb(115, 108, 108);
+    border-radius: 10px;
+    height: 100px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+table{
+    table-layout: fixed;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+thead tr th{
+    font-weight: 400;
+    float: left;
+}
+tbody{
+    display: block;
+    width: 1192px;
+    height: 534px;
+    overflow-y: scroll;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+tbody::-webkit-scrollbar {width: 1px;}
+tbody::-webkit-scrollbar-track {background: rgb(189, 189, 189);}
+tbody::-webkit-scrollbar-thumb {background: rgb(126, 126, 126);}
+
+td{
+    line-height: 170px;
+}
+
+tr td{
+    font-size: 24px;
+}
+tr td:first-child{
+    font-size: 34px;
+    text-align: left;
+    margin-left: 20px;
+}
+tr td:last-child{
+    text-align: right;
+}
+
+tbody tr td:nth-child(1){width: 610px;}
+th:nth-child(1){width: 610px;}
+
+tr td:nth-child(2) {width: 160px;}
+th:nth-child(2) {width: 195px;}
+
+tr td:nth-child(3) {width: 70px;}
+th:nth-child(3) {width: 70px;}
+
+tr td:nth-child(4) {width: 160px;}
+th:nth-child(4) {width: 160px;}
+
+tr td:nth-child(5) {width: 150px;}
+th:nth-child(5) {width: 150px;}
+
+thead tr{
+    margin-top: 50px;
+    line-height: 70px;
+    border-bottom: 1px solid rgb(153, 153, 153);
+}
+
+tbody tr{
+    border-bottom: 1px solid rgb(153, 153, 153);
+}
+
+tbody tr:first-child td{
+    line-height: 130px;
+    padding-bottom: 20px;
+}
+
+td button {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 24px;
+    background-color: rgb(28, 28, 28);
+    border-radius: 5px;
+    padding: 2px 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: .3s;
+}
+td button:hover {
+    border-color: rgb(255, 255, 255);
+}
+
+.dbdata{
+    color: rgb(207, 207, 207);
+    margin-left: 5px;
+}
+
+
+.commentPopup{
+    position: fixed;
+    height: 100vw;
+    width: 100vw;
+    visibility: hidden;
+}   
+.commentPopup.is-visible{
+    visibility: visible;
+}
+.commentBlackout{
+	cursor: pointer;
+	position: fixed;
+	height: 100vw;
+	background-color: black;
+	width: 100vw;
+	top: 0;
+    left: 0;
+	opacity: 0.8;
+	transition: .2s;
+    z-index: 10;
+}
+
+.productReview{
+    position: fixed;
+    height: 450px;
+    width: 650px;
+    background-color: white;
+    border: 2px solid rgb(177, 177, 177);
+    border-radius: 10px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    text-align: center;
+    transition: .1s;
+    overflow: hidden;
+}
+
+.productReview h2{
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 70px;
+    color: #464646;
+}
+
+.productReview .bigStars{
+    transform: scale(1.5);
+}
+
+.productReview .bigStars label{
+    cursor: pointer;
+}
+
+.starRating{
+    display: none;
+}
+
+.star.filled {
+    fill: rgb(255, 223, 0);
+}
+
+.productReview textarea{
+    font-size: 28px;
+    color: #000000;
+    margin: auto;
+    margin-top: 30px;
+
+    width: 650px;
+    border-radius: 5px;
+    border: 1px solid rgb(175, 175, 175);
+}
+
+.productReview textarea:focus{
+    border: 1px solid rgb(175, 175, 175);
+}
+
+.reviewButton{
+    margin: auto;
+    margin-top: 20px;
+    width: 400px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    color: #000000;
+    font-size: 25px;
+
+}
+.reviewButton:hover{
+    background-color: rgb(236, 236, 236);
+    width: 395px;
+}
+.errorComment{
+    color: red;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
